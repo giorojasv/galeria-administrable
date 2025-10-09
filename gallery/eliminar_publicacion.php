@@ -3,7 +3,7 @@ include 'config.php';
 verificar_rol_admin(); // ¡SOLO ADMINISTRADORES PUEDEN PASAR DE ESTE PUNTO!
 
 // Configuración de conexión (Ajustar según tu entorno)
-$host = 'localhost'; $user = 'academia_galeria'; $password = '@galeria2025'; $db = 'academia_galeria';
+$host = 'localhost'; $user = ''; $password = ''; $db = '';
 
 $conn = new mysqli($host, $user, $password, $db);
 if ($conn->connect_error) { die("Conexión fallida: " . $conn->connect_error); }
@@ -57,4 +57,5 @@ try {
     die("Error al intentar eliminar la publicación: " . $e->getMessage());
 }
 $conn->close();
+
 ?>
