@@ -3,7 +3,7 @@ include 'config.php';
 verificar_sesion(); // Solo usuarios logueados pueden previsualizar
 
 // Configuración de conexión
-$host = 'localhost'; $user = 'academia_galeria'; $password = '@galeria2025'; $db = 'academia_galeria';
+$host = 'localhost'; $user = ''; $password = ''; $db = '';
 $conn = new mysqli($host, $user, $password, $db);
 
 $publicacion_id = isset($_GET['id']) ? intval($_GET['id']) : 0;
@@ -267,4 +267,5 @@ $collage = $data;
         }
     </script>
 </body>
+
 </html>
