@@ -3,7 +3,7 @@ include 'config.php';
 verificar_rol_admin(); // Solo el Admin puede crear nuevos usuarios
 
 // Configuración de conexión (Ajustar según tu entorno)
-$host = 'localhost'; $user = 'academia_galeria'; $password = '@galeria2025'; $db = 'academia_galeria';
+$host = 'localhost'; $user = ''; $password = ''; $db = '';
 
 $conn = new mysqli($host, $user, $password, $db);
 if ($conn->connect_error) { die("Conexión fallida: " . $conn->connect_error); }
@@ -113,4 +113,5 @@ $conn->close();
         <p style="text-align: center; margin-top: 20px;"><a href="admin.php">← Volver al Panel</a></p>
     </div>
 </body>
+
 </html>
