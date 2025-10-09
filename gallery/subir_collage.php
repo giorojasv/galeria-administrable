@@ -8,7 +8,7 @@ $rol_usuario_actual = $_SESSION['usuario_rol'];
 global $ROLES_APROBADORES; // Para usar la lista de roles aprobadores
 
 // Configuración de conexión (Ajustar según tu entorno)
-$host = 'localhost'; $user = 'academia_galeria'; $password = '@galeria2025'; $db = 'academia_galeria';
+$host = 'localhost'; $user = ''; $password = ''; $db = '';
 
 $conn = new mysqli($host, $user, $password, $db);
 if ($conn->connect_error) { die("Conexión fallida: " . $conn->connect_error); }
@@ -131,4 +131,5 @@ HTML;
     }
 }
 $conn->close();
+
 ?>
