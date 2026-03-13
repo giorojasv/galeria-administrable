@@ -3,7 +3,7 @@ include 'config.php';
 verificar_sesion(); // Obliga a iniciar sesión
 
 // Configuración de conexión (Ajustar según tu entorno)
-$host = 'localhost'; $user = 'academia_galeria'; $password = '@galeria2025'; $db = 'academia_galeria';
+$host = 'localhost'; $user = ''; $password = ''; $db = '';
 
 $conn = new mysqli($host, $user, $password, $db);
 if ($conn->connect_error) { die("Conexión fallida: " . $conn->connect_error); }
@@ -95,7 +95,7 @@ $es_aprobador = in_array($rol_actual, $ROLES_APROBADORES);
     
     <?php if ($rol_actual === ROL_COLABORADOR): ?>
         <p style="color: #004d99; font-weight: bold; background-color: #e9f7ef; padding: 10px; border-radius: 5px;">
-        📢 **Tu rol es Colaborador.** Las publicaciones serán **PENDIENTES** hasta que un Administrador/Editor las apruebe.
+         **Tu rol es Colaborador.** Las publicaciones serán **PENDIENTES** hasta que un Administrador/Editor las apruebe.
         </p>
     <?php endif; ?>
 
@@ -126,9 +126,9 @@ $es_aprobador = in_array($rol_actual, $ROLES_APROBADORES);
     <h2>Gestión de Publicaciones Existentes (Total: <?php echo $total_publicaciones; ?>)</h2>
     
     <?php if (isset($_GET['status']) && $_GET['status'] == 'deleted'): ?>
-        <p style="color: green; font-weight: bold;">✅ Publicación eliminada con éxito.</p>
+        <p style="color: green; font-weight: bold;"> Publicación eliminada con éxito.</p>
     <?php elseif (isset($_GET['status']) && $_GET['status'] == 'approved'): ?>
-        <p style="color: green; font-weight: bold;">✅ Publicación ID <?php echo htmlspecialchars($_GET['pub_id']); ?> ha cambiado a estado: **<?php echo strtoupper(htmlspecialchars($_GET['new_state'])); ?>**.</p>
+        <p style="color: green; font-weight: bold;"> Publicación ID <?php echo htmlspecialchars($_GET['pub_id']); ?> ha cambiado a estado: **<?php echo strtoupper(htmlspecialchars($_GET['new_state'])); ?>**.</p>
     <?php endif; ?>
 
     <?php if ($resultado_listado->num_rows > 0): ?>
@@ -146,7 +146,7 @@ $es_aprobador = in_array($rol_actual, $ROLES_APROBADORES);
                     <?php if ($rol_actual !== ROL_COLABORADOR): ?>
                     <a href="vista_previa.php?id=<?php echo $fila['id']; ?>" target="_blank" 
                        class="boton-preview" title="Ver como el público">
-                       Vista Previa 👁️
+                       Vista Previa 
                     </a>
                     <?php endif; ?>
                     
@@ -154,7 +154,7 @@ $es_aprobador = in_array($rol_actual, $ROLES_APROBADORES);
                         
                         <a href="editar_publicacion.php?id=<?php echo $fila['id']; ?>" class="boton-preview" 
                            title="Modificar descripción y archivos" style="background-color: #f0ad4e;">
-                           Editar ✏️
+                           Editar 
                         </a>
                         
                         <a href="aprobar_publicacion.php?id=<?php echo $fila['id']; ?>&estado=aprobada" 
@@ -204,7 +204,7 @@ $es_aprobador = in_array($rol_actual, $ROLES_APROBADORES);
         let xhr = null; 
 
         function confirmarEliminacion(id) {
-            if (confirm("⚠️ ¿Estás SEGURO de que quieres eliminar esta publicación y todos sus archivos? Esta acción es permanente.")) {
+            if (confirm(" ¿Estás SEGURO de que quieres eliminar esta publicación y todos sus archivos? Esta acción es permanente.")) {
                 window.location.href = 'eliminar_publicacion.php?id=' + id;
             }
         }
@@ -284,4 +284,5 @@ $es_aprobador = in_array($rol_actual, $ROLES_APROBADORES);
     </script>
 
 </body>
+
 </html>
