@@ -52,7 +52,7 @@ $conn->close();
 </head>
 <body>
     <div class="login-box">
-        <h1>🔐 Acceso al Panel</h1>
+        <h1> Acceso al Panel</h1>
         <p style="color: red;"><?php echo $mensaje; ?></p>
         
         <form method="POST" action="login.php">
@@ -68,3 +68,4 @@ $conn->close();
 </body>
 
 </html>
+
