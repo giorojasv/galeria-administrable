@@ -46,12 +46,12 @@ if (isset($_GET['delete_file_id'])) {
             if (file_exists($file_path)) {
                 unlink($file_path);
             }
-            $mensaje = "✅ Archivo eliminado con éxito.";
+            $mensaje = " Archivo eliminado con éxito.";
         } else {
-            $mensaje = "❌ Error al eliminar el registro de la base de datos.";
+            $mensaje = " Error al eliminar el registro de la base de datos.";
         }
     } else {
-        $mensaje = "❌ Archivo no encontrado o no pertenece a esta publicación.";
+        $mensaje = " Archivo no encontrado o no pertenece a esta publicación.";
     }
 }
 
@@ -62,9 +62,9 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['descripcion'])) {
     $sql_update = "UPDATE galeria_publicaciones SET descripcion = '{$nueva_descripcion}' WHERE id = {$publicacion_id}";
     
     if ($conn->query($sql_update) === TRUE) {
-        $mensaje = "✅ Descripción actualizada con éxito.";
+        $mensaje = " Descripción actualizada con éxito.";
     } else {
-        $mensaje = "❌ Error al actualizar la descripción: " . $conn->error;
+        $mensaje = " Error al actualizar la descripción: " . $conn->error;
     }
 }
 
@@ -165,14 +165,14 @@ $conn->close();
                 </div>
             <?php endwhile; ?>
         <?php else: ?>
-            <p>⚠️ Advertencia: Esta publicación no tiene archivos asociados. Si la aprueba, estará vacía.</p>
+            <p> Advertencia: Esta publicación no tiene archivos asociados. Si la aprueba, estará vacía.</p>
         <?php endif; ?>
 
     </div>
 
     <script>
         function confirmarEliminacionArchivo(publicacionId, archivoId) {
-            if (confirm("⚠️ ¿Estás SEGURO de que quieres eliminar este archivo? Esta acción es permanente y puede dejar la publicación vacía.")) {
+            if (confirm(" ¿Estás SEGURO de que quieres eliminar este archivo? Esta acción es permanente y puede dejar la publicación vacía.")) {
                 window.location.href = `editar_publicacion.php?id=${publicacionId}&delete_file_id=${archivoId}`;
             }
         }
@@ -180,3 +180,4 @@ $conn->close();
 </body>
 
 </html>
+
