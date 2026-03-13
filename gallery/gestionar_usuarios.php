@@ -19,13 +19,13 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     if ($accion === 'eliminar' && $usuario_id > 0) {
         // Validación de seguridad: No permitir que el admin se elimine a sí mismo
         if ($usuario_id == $_SESSION['usuario_id']) {
-            $mensaje = "<p class='error'>❌ No puedes eliminar tu propia cuenta mientras estás logueado.</p>";
+            $mensaje = "<p class='error'> No puedes eliminar tu propia cuenta mientras estás logueado.</p>";
         } else {
             $sql_del = "DELETE FROM galeria_usuarios WHERE id = $usuario_id";
             if ($conn->query($sql_del) === TRUE && $conn->affected_rows > 0) {
-                $mensaje = "<p class='exito'>✅ Usuario con ID {$usuario_id} eliminado correctamente.</p>";
+                $mensaje = "<p class='exito'> Usuario con ID {$usuario_id} eliminado correctamente.</p>";
             } else {
-                $mensaje = "<p class='error'>❌ Error al eliminar el usuario o no existe.</p>";
+                $mensaje = "<p class='error'> Error al eliminar el usuario o no existe.</p>";
             }
         }
     }
@@ -34,7 +34,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     if ($accion === 'cambiar_clave' && $usuario_id > 0) {
         $nueva_clave = $_POST['nueva_clave'];
         if (strlen($nueva_clave) < 6) {
-             $mensaje = "<p class='error'>❌ La nueva contraseña debe tener al menos 6 caracteres.</p>";
+             $mensaje = "<p class='error'> La nueva contraseña debe tener al menos 6 caracteres.</p>";
         } else {
             $password_hash = password_hash($nueva_clave, PASSWORD_DEFAULT);
             $sql_update = "UPDATE galeria_usuarios SET password_hash = ? WHERE id = ?";
@@ -43,9 +43,9 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             $stmt->bind_param("si", $password_hash, $usuario_id);
             
             if ($stmt->execute()) {
-                $mensaje = "<p class='exito'>🔑 Contraseña del usuario ID {$usuario_id} actualizada con éxito.</p>";
+                $mensaje = "<p class='exito'> Contraseña del usuario ID {$usuario_id} actualizada con éxito.</p>";
             } else {
-                $mensaje = "<p class='error'>❌ Error al actualizar la contraseña: " . $stmt->error . "</p>";
+                $mensaje = "<p class='error'> Error al actualizar la contraseña: " . $stmt->error . "</p>";
             }
             $stmt->close();
         }
@@ -140,12 +140,13 @@ $conn->close();
 
     <script>
         function confirmarEliminar(usuario) {
-            return confirm(`⚠️ ¿Estás seguro de que quieres eliminar al usuario ${usuario}? Esta acción no se puede deshacer.`);
+            return confirm(` ¿Estás seguro de que quieres eliminar al usuario ${usuario}? Esta acción no se puede deshacer.`);
         }
         function confirmarCambioClave(usuario) {
-            return confirm(`🔑 ¿Confirmas que deseas cambiar la contraseña del usuario ${usuario}?`);
+            return confirm(` ¿Confirmas que deseas cambiar la contraseña del usuario ${usuario}?`);
         }
     </script>
 </body>
 
 </html>
+
