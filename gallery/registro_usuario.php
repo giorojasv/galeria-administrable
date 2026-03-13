@@ -17,11 +17,11 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 
     // Validación básica de campos
     if (empty($usuario) || empty($clave) || empty($rol)) {
-        $mensaje = "<p class='error'>❌ Todos los campos son obligatorios.</p>";
+        $mensaje = "<p class='error'> Todos los campos son obligatorios.</p>";
     } elseif (strlen($clave) < 6) {
-        $mensaje = "<p class='error'>❌ La contraseña debe tener al menos 6 caracteres.</p>";
+        $mensaje = "<p class='error'> La contraseña debe tener al menos 6 caracteres.</p>";
     } elseif (!in_array($rol, [ROL_ADMIN, ROL_EDITOR, ROL_COLABORADOR])) { // Validación de rol
-        $mensaje = "<p class='error'>❌ Rol de usuario inválido.</p>";
+        $mensaje = "<p class='error'> Rol de usuario inválido.</p>";
     } else {
         // Cifrado seguro de la contraseña
         $password_hash = password_hash($clave, PASSWORD_DEFAULT);
@@ -34,7 +34,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         $stmt_check->store_result();
 
         if ($stmt_check->num_rows > 0) {
-            $mensaje = "<p class='error'>❌ El nombre de usuario ya existe.</p>";
+            $mensaje = "<p class='error'> El nombre de usuario ya existe.</p>";
         } else {
             // Insertar nuevo usuario
             $sql_insert = "INSERT INTO galeria_usuarios (usuario, password_hash, rol) VALUES (?, ?, ?)";
@@ -42,9 +42,9 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             $stmt_insert->bind_param("sss", $usuario, $password_hash, $rol);
 
             if ($stmt_insert->execute()) {
-                $mensaje = "<p class='exito'>✅ Usuario **" . htmlspecialchars($usuario) . "** creado con el rol: **" . htmlspecialchars($rol) . "**.</p>";
+                $mensaje = "<p class='exito'> Usuario **" . htmlspecialchars($usuario) . "** creado con el rol: **" . htmlspecialchars($rol) . "**.</p>";
             } else {
-                $mensaje = "<p class='error'>❌ Error al crear el usuario: " . $stmt_insert->error . "</p>";
+                $mensaje = "<p class='error'> Error al crear el usuario: " . $stmt_insert->error . "</p>";
             }
             $stmt_insert->close();
         }
@@ -90,7 +90,7 @@ $conn->close();
 </head>
 <body>
     <div class="contenedor">
-        <h1>➕ Crear Cuenta de Usuario</h1>
+        <h1> Crear Cuenta de Usuario</h1>
         
         <?php echo $mensaje; ?>
         
@@ -115,3 +115,4 @@ $conn->close();
 </body>
 
 </html>
+
